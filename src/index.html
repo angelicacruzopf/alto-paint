@@ -1,0 +1,1212 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./tailwind.css" rel="stylesheet" />
+    <title>Al's Touch of Paint</title>
+
+    <!-- ALPINE -->
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"
+    ></script>
+
+    <!-- GOOGLE FONTS Lato -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-body">
+    <header>
+      <!-- FIXED NAV -->
+
+      <nav
+        class="hidden md:flex flex-row justify-between items-center text-sm bg-white px-4 md:px-2 lg:px-4 py-2 fixed z-50 w-full gap-2 lg:gap-4 shadow-md"
+      >
+        <div class="h-10">
+          <img
+            src="./img/logos/logo-full.png"
+            alt="Logo"
+            class="object-contain w-full h-full"
+          />
+        </div>
+        <div class="flex flex-row grow justify-center max-w-[1000px]">
+          <div
+            class="flex flex-row grow justify-center font-normal text-center text-navGray items-center lg:text-base"
+          >
+            <a
+              href="#hero"
+              class="cursor-pointer py-1 px-2 hover:text-primary hover:underline hover:underline-offset-4 hover:decoration-2 transition-all ease-in leading-6"
+            >
+              Home
+            </a>
+            <a
+              href="#products"
+              class="cursor-pointer py-1 px-2 hover:text-primary hover:underline hover:underline-offset-4 hover:decoration-2 transition-all ease-in leading-6 text-nowrap"
+            >
+              Our work
+            </a>
+            <a
+              href="#departamentos"
+              class="cursor-pointer py-1 px-2 hover:text-primary hover:underline hover:underline-offset-4 hover:decoration-2 transition-all ease-in leading-6 text-nowrap"
+            >
+              Who we are
+            </a>
+            <a
+              href="#contacto"
+              class="cursor-pointer py-1 px-2 hover:text-primary hover:underline hover:underline-offset-4 hover:decoration-2 transition-all ease-in leading-6"
+            >
+              Contact
+            </a>
+            <a
+              href="#sucursales"
+              class="cursor-pointer py-1 px-2 hover:text-primary hover:underline hover:underline-offset-4 hover:decoration-2 transition-all ease-in leading-6"
+            >
+              Location
+            </a>
+          </div>
+        </div>
+        <div class="min-w-[140px]">
+          <button
+            type="button"
+            class="cursor-pointer lg:min-w-[170px] text-white py-2 px-4 text-lg flex gap-2 items-center sm:text-xs lg:text-base w-full transition-all ease-in hover:bg-secondary focus:ring-4 focus:bg-primary focus:ring-primary/50 active:ring-4 active:ring-secondary/50 active:bg-secondary disabled:bg-opacity-50 bg-primary"
+          >
+            <div class="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <span class="text-nowrap font-semibold">(956) 456-2971</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- MOBILE NAV -->
+
+      <nav
+        x-data="{ open: false }"
+        class="md:hidden fixed flex-row justify-between items-center text-sm bg-white z-50 w-full shadow-md top-0 flex px-4 py-2"
+      >
+        <div class="flex flex-row items-center justify-between text-sm w-full">
+          <div class="h-10">
+            <img
+              src="./img/logos/logo-full.png"
+              class="object-contain h-full w-full"
+              alt="Logo"
+            />
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2">
+              <button
+                id="call-icon"
+                class="text-lg text-white bg-primary py-1 px-4 cursor-pointer transition-all ease-in hover:bg-secondary focus:ring-2 focus:ring-primary focus:bg-primary active:ring-2 active:ring-secondary active:bg-secondary disabled:opacity-50 rounded-full"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <button
+                id="bars"
+                x-on:click="open = ! open"
+                class="text-lg text-primary cursor-pointer transition-all ease-in p-1 hover:text-secondary focus:ring-2 focus:ring-primary focus:text-primary active:ring-2 active:ring-secondary active:text-secondary disabled:opacity-50 rounded-md"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div
+              x-show="open"
+              id="menu"
+              class="flex flex-col grow justify-center absolute top-[55px] right-[0] shadow-lg"
+            >
+              <div
+                class="flex flex-col grow justify-evenly font-medium text-darkGray text-center divide-y z-20 bg-white"
+              >
+                <a
+                  href="#hero"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Home
+                </a>
+                <a
+                  href="#products"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Our work
+                </a>
+                <a
+                  href="#departamentos"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Who we are
+                </a>
+                <a
+                  href="#contacto"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Contact
+                </a>
+                <a
+                  href="#sucursales"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Location
+                </a>
+                <a
+                  href="#horarios"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Hours
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- BANNER PROMOCIONAL -->
+
+      <section>
+        <div
+          class="w-full bg-sixth text-white text-sm sm-banner flex justify-between items-center p-2 absolute top-[55px] z-30 bg-mediumGray"
+        >
+          <div class="text-white h-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <p class="text-center">
+            Add <strong> color </strong> to your <strong>life!</strong>
+          </p>
+          <div class="text-white h-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section
+        id="hero"
+        class="text-center flex flex-col md:flex-row items-center justify-center h-[650px] md:h-[600px] mt-[90px] md:mt-0 bg-hero-mobile bg-bottom bg-cover bg-no-repeat md:bg-fifth"
+      >
+        <div
+          class="hidden md:flex h-1/2 w-full md:h-full md:w-1/2 justify-center items-center pt-0 md:pt-[90px] max-h-[470px] md:max-h-full"
+        >
+          <img
+            src="./img/banner-desktop.png"
+            alt="Playground"
+            class="object-cover h-full w-full"
+          />
+        </div>
+        <div
+          class="flex justify-center items-start w-full h-full md:w-1/2 md:pt-[100px] md:bg-fifth"
+        >
+          <div
+            class="flex flex-col justify-center items-center w-[90%] md:h-full gap-8 text-white py-10 md:p-0"
+          >
+            <div class="w-full flex flex-col items-center gap-2">
+              <h1
+                class="w-full text-[28px] md:text-[40px] leading-12 md:text-center font-extrabold"
+              >
+                We'll give you a fresh coat!
+              </h1>
+            </div>
+            <div class="w-full flex flex-col items-center">
+              <div
+                class="flex flex-row items-center justify-center w-[90%] max-w-[342px]"
+              >
+                <button
+                  type="submit"
+                  class="bg-secondary text-white py-2 px-4 font-semibold text-lg flex gap-2 items-center justify-center w-full transition-all ease-in hover:bg-secondary/50 focus:ring-4 focus:bg-secondary focus:ring-secondary/50 active:bg-opacity-0 active:ring-4 active:ring-secondary/50 disabled:bg-opacity-50 rounded-full"
+                >
+                  Contact us
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTOS -->
+      <section
+        id="products"
+        class="flex items-center py-16 flex-col bg-mediumGray"
+      >
+        <div class="w-[90%] md:w-full flex flex-col items-center gap-8">
+          <h2
+            class="text-center text-2xl md:text-5xl text-white font-extrabold"
+          >
+            Our work
+          </h2>
+
+          <!-- CARDS  -->
+
+          <div class="w-full">
+            <div
+              id="slideshow-container"
+              class="flex flex-col flex-wrap md:flex-row justify-center gap-8"
+            >
+              <!-- CARD 01 -->
+
+              <div class="md:w-[30%] w-full md:min-w-[350px]">
+                <div class="w-full flex flex-col bg-white">
+                  <div class="">
+                    <img
+                      src="./img/products/AA01s.png"
+                      alt="Frida Kahlo Eyewear"
+                      class="object-contain w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 02 -->
+
+              <div class="md:w-[30%] w-full md:min-w-[350px]">
+                <div class="w-full flex flex-col bg-white">
+                  <div class="">
+                    <img
+                      src="./img/products/AA02s.png"
+                      alt="Nike Prescription Eyewear"
+                      class="object-contain w-full justify-self-start"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 03 -->
+
+              <div class="md:w-[30%] w-full md:min-w-[350px]">
+                <div class="w-full flex flex-col bg-white">
+                  <div class="">
+                    <img
+                      src="./img/products/AA03s.png"
+                      alt="Ray Ban"
+                      class="object-contain w-full justify-self-start"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 04 -->
+
+              <div class="md:w-[30%] w-full md:min-w-[350px]">
+                <div class="w-full flex flex-col bg-white">
+                  <div class="">
+                    <img
+                      src="./img/products/AA04s.png"
+                      alt="Ray Ban"
+                      class="object-contain w-full justify-self-start"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 05 -->
+
+              <div class="md:w-[30%] w-full md:min-w-[350px]">
+                <div class="w-full flex flex-col bg-white">
+                  <div class="">
+                    <img
+                      src="./img/products/AA05s.png"
+                      alt="Ray Ban"
+                      class="object-contain w-full justify-self-start"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 06 -->
+
+              <div class="md:w-[30%] w-full md:min-w-[350px]">
+                <div class="w-full flex flex-col bg-white">
+                  <div class="">
+                    <img
+                      src="./img/products/AA06s.png"
+                      alt="Ray Ban"
+                      class="object-contain w-full justify-self-start"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEPARTAMENTOS-->
+
+      <section id="departamentos" class="flex items-center flex-col w-full">
+        <!-- CARD 01 -->
+        <div class="flex items-center flex-col w-full pt-16">
+          <h2 class="font-extrabold text-3xl lg:text-5xl">Who we are</h2>
+
+          <div
+            class="w-full md:w-9/12 py-10 px-4 md:px-0 max-w-[1000px] flex flex-col items-center gap-6 md:flex-row"
+          >
+            <div class="md:h-64 min-w-32 w-full h-48">
+              <img
+                src="./img/departamentos/DD01s.png"
+                alt="Icon leaves"
+                class="object-cover h-full w-full rounded-2xl"
+              />
+            </div>
+            <div class="flex flex-col gap-6">
+              <h2
+                class="font-bold text-2xl md:text-4xl text-third text-center md:text-left"
+              >
+                Residential Electrical Services
+              </h2>
+              <p class="text-darkGray">
+                As a premier painting contractor, we are committed to delivering
+                customer service that is second to none. We offer a wide range
+                of services to meet your residential and commercial painting
+                needs. Big job or small, we have you covered. We specialize
+                in...
+              </p>
+              <ul class="list-disc list-inside">
+                <li>Cleaning</li>
+                <li>Pressure Washing</li>
+                <li>Drywall Repairs</li>
+                <li>Carpet Cleaning</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 02 -->
+        <div class="flex items-center flex-col w-full">
+          <div
+            class="w-full md:w-9/12 py-10 px-4 md:px-0 max-w-[1000px] flex flex-col items-center gap-6 md:flex-row-reverse"
+          >
+            <div class="md:h-64 min-w-32 w-full">
+              <img
+                src="./img/departamentos/DD02s.png"
+                alt="Icon leaves"
+                class="object-cover h-full w-full rounded-2xl"
+              />
+            </div>
+            <div class="flex flex-col gap-6">
+              <h2
+                class="font-bold text-2xl md:text-4xl text-third text-center md:text-left"
+              >
+                We Care About the Details
+              </h2>
+              <p class="text-darkGray">
+                We strive to provide honest, reliable, residential and
+                commercial painting services that stand head and shoulders above
+                the rest. We combine the industry's best paint with our passion
+                for detail to exceed your expectations.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 03 -->
+        <div class="flex items-center flex-col w-full">
+          <div
+            class="w-full md:w-9/12 py-10 px-4 md:px-0 max-w-[1000px] flex flex-col items-center gap-6 md:flex-row"
+          >
+            <div class="md:h-64 min-w-32 w-full">
+              <img
+                src="./img/departamentos/DD03s.png"
+                alt="Icon leaves"
+                class="object-cover h-full w-full rounded-2xl"
+              />
+            </div>
+            <div class="flex flex-col gap-6">
+              <h2
+                class="font-bold text-2xl md:text-4xl text-third text-center md:text-left"
+              >
+                Customer Satisfaction Guaranteed
+              </h2>
+              <p class="text-darkGray">
+                We work around your busy schedule, consult with you on all
+                aspects of color selection and color coordination for your
+                project to ensure completeness according to your preferences.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE NOSOTROS -->
+      <section id="about" class="bg-third">
+        <div class="flex flex-col items-center justify-center">
+          <div
+            class="flex flex-row justify-center py-12 md:py-16 w-10/12 max-w-[1200px] md:gap-8"
+          >
+            <div
+              class="flex flex-col items-center justify-center w-[90%] md:w-1/2 gap-8"
+            >
+              <div class="flex flex-col justify-center items-center h-16">
+                <img
+                  src="./img/logos/logo-full-wb.png"
+                  alt="Logo"
+                  class="object-cover w-full h-full rounded-2xl"
+                />
+              </div>
+              <div class="flex flex-col gap-4">
+                <div
+                  class="text-white flex flex-col gap-4 items-left text-center md:text-left"
+                >
+                  <p>
+                    At Al's Touch of Paint, we believe that a fresh coat of
+                    paint can transform a space. We are committed to providing
+                    our customers with high-quality painting services that
+                    exceed expectations.
+                  </p>
+                  <p>
+                    Our team of skilled painters is dedicated to delivering
+                    exceptional results on every project, big or small. Whether
+                    you're looking to refresh your home's interior, update your
+                    office space, or enhance the curb appeal of your property,
+                    we have the expertise and resources to get the job done
+                    right.
+                  </p>
+                  <p>
+                    From our initial consultation to the final coat of paint, we
+                    work closely with our clients to ensure that their vision
+                    becomes a reality.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-1/2 h-128 rounded-3xl font-normal hidden md:inline-block"
+            >
+              <img
+                src="img/about-us.png"
+                alt="Fotografía de sucursal"
+                class="object-cover min-h-[500px]"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIOS -->
+      <section id="reviews" class="flex items-center py-16 flex-col bg-fourth">
+        <div
+          class="w-[90%] md:w-full flex flex-col items-center max-w-[1000px]"
+        >
+          <h2 class="font-bold text-center text-2xl md:text-5xl text-white">
+            Some of our reviews
+          </h2>
+          <!-- PARA ESCRITORIO -->
+          <div
+            class="flex flex-col gap-4 md:flex-row md:flex-wrap items-center md:items-start py-16 w-full justify-center"
+          >
+            <!-- CARD 01 -->
+
+            <div
+              class="w-full md:w-[30%] min-w-[280px] flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+            >
+              <div
+                class="flex flex-row gap-4 sm:flex-wrap items-centers w-full justify-center"
+              >
+                <div
+                  class="h-32 w-32 shadow-xl rounded-full hidden md:inline-block"
+                >
+                  <img
+                    src="./img/review/RR01s.png"
+                    alt="Shane Watkins"
+                    class="object-cover"
+                  />
+                </div>
+
+                <div class="flex flex-col items-center text-center gap-4">
+                  <p class="text-gray-500">
+                    <strong>"</strong>Great work, fast scheduling, and very
+                    competitive pricing. I used Al's on two occasions and they
+                    did am excellent job.<strong>"</strong>
+                  </p>
+                  <h4 class="font-semibold">Shane Watkins</h4>
+                  <div>
+                    <img
+                      src="./img/icons/facebook-bl.png"
+                      alt="Facebook logo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 02 -->
+
+            <div
+              class="w-full md:w-[30%] min-w-[280px] flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+            >
+              <div
+                class="h-32 w-32 shadow-xl rounded-full hidden md:inline-block"
+              >
+                <img
+                  src="./img/review/RR02s.png"
+                  alt="Frankie Velazquez"
+                  class="object-coverl"
+                />
+              </div>
+
+              <div class="flex flex-col items-center text-center gap-4">
+                <p class="text-gray-500">
+                  <strong>"</strong>great experience! glad to have crossed paths
+                  with these wonderful people!! 5 🌟🌟🌟🌟🌟<strong>"</strong>
+                </p>
+                <h4 class="font-semibold">Frankie Velazquez</h4>
+                <div>
+                  <img src="./img/icons/facebook-bl.png" alt="Facebook logo" />
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 03 -->
+
+            <div
+              class="w-full md:w-[30%] min-w-[280px] flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+            >
+              <div
+                class="h-32 w-32 shadow-xl rounded-full hidden md:inline-block"
+              >
+                <img
+                  src="./img/review/RR03s.png"
+                  alt="Steeve Leger"
+                  class="object-cover"
+                />
+              </div>
+
+              <div class="flex flex-col items-center text-center gap-4">
+                <p class="text-gray-500">
+                  <strong>"</strong>Excellent service and really nice
+                  people<strong>"</strong>
+                </p>
+                <h4 class="font-semibold">Steeve Leger</h4>
+                <div>
+                  <img src="./img/icons/facebook-bl.png" alt="Facebook logo" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+
+      <section id="contacto" class="flex justify-center bg-white">
+        <div
+          class="flex flex-col md:flex-row py-20 w-[90%] lg:w-9/12 gap-8 text-mediumGray max-w-[1000px]"
+        >
+          <div class="flex flex-col gap-8 md:w-1/2">
+            <h2
+              class="text-2xl text-center md:text-4xl md:text-left font-extrabold"
+            >
+              Want an appointment?
+              <br />
+              Send us a message!
+            </h2>
+            <div class="font-semibold md:inline-block" hidden>
+              <div class="flex items-center mb-7">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                    />
+                  </svg>
+                </div>
+                <div class="flex flex-col gap-y-2 ms-4 underline text-primary">
+                  <p>704-837-6746</p>
+                </div>
+              </div>
+              <div class="flex items-center mb-7">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                    />
+                  </svg>
+                </div>
+                <p class="ms-4 break-all text-primary underline">
+                  altopaint@gmail.com
+                </p>
+              </div>
+
+              <div class="flex items-center mb-7">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    />
+                  </svg>
+                </div>
+                <div class="flex flex-col ms-4 gap-y-4">
+                  <p><strong>Hours:</strong></p>
+                  <p>Monday - Friday: 9:00am - 5:00pm</p>
+                  <p>Saturday: 10:00am - 3:00pm</p>
+                  <p>Sunday: Closed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:w-1/2 gap-4 w-full">
+            <!-- FORMULARIO -->
+            @include('partials._contact') @antlers {{ form:contact }} {{ if
+            success }}
+            <div class="bg-green-300 text-white p-2">{{ success }}</div>
+            {{ else }} {{ if errors }}
+            <div class="bg-red-300 text-white p-2">
+              {{ errors }} {{ value }}<br />
+              {{ /errors }}
+            </div>
+            {{ /if }}
+
+            <div class="flex flex-col gap-4 text-white">
+              <div class="flex flex-col md:flex-row gap-4 w-full">
+                <div class="md:w-1/2 flex flex-col">
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    minlength="2"
+                    maxlength="32"
+                    pattern="[A-Za-z\s]{1,32}"
+                    title="Nombres"
+                    class="w-full h-12 p-4 text-white focus:outline-none focus:border-lightGray focus:ring-1 focus:ring-lightGray invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 bg-formBg"
+                    placeholder="Name(s)"
+                  />
+                  {{ if errors }}
+                  <span class="inline-block text-pink-500">
+                    This field can't be empty, e.g. John
+                  </span>
+                  {{ /if }}
+                </div>
+                <div class="md:w-1/2 flex flex-col">
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    minlength="2"
+                    maxlength="32"
+                    pattern="[A-Za-z]{1,32}"
+                    class="w-full h-12 p-4 text-white focus:outline-none focus:border-lightGray focus:ring-1 focus:ring-lightGray invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 bg-formBg"
+                    placeholder="Last name(s)"
+                  />
+
+                  {{ if errors }}
+                  <span class="inline-block text-pink-500">
+                    This field can't be empty, e.g. Doe
+                  </span>
+                  {{ /if }}
+                </div>
+              </div>
+
+              <div class="w-full flex flex-col">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  minlength="4"
+                  class="w-full h-12 p-4 text-white focus:outline-none focus:border-lightGray focus:ring-1 focus:ring-lightGray invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 bg-formBg"
+                  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                  placeholder="Email"
+                />
+
+                {{ if errors }}
+                <span class="inline-block text-pink-500">
+                  This field can't be empty, e.g. correo@ejemplo.com
+                </span>
+                {{ /if }}
+              </div>
+
+              <div class="w-full flex flex-col">
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  inputmode="numeric"
+                  minlength="9"
+                  maxlength="12"
+                  class="w-full h-12 p-4 text-white focus:outline-none focus:border-lightGray focus:ring-1 focus:ring-lightGray invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 bg-formBg"
+                  pattern="^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
+                  placeholder="Phone number"
+                />
+
+                {{ if errors }}
+                <span class="inline-block text-pink-500">
+                  This field can't be empty, e.g. 123 456 7890
+                </span>
+                {{ /if }}
+              </div>
+              <div class="w-full flex flex-col">
+                <textarea
+                  required
+                  name="note"
+                  id="note"
+                  minlength="10"
+                  class="bg-[F5F5F5] w-full min-h-40 p-4 resize-none text-white focus:outline-none focus:border-lightGray focus:ring-1 focus:ring-lightGray invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 bg-formBg"
+                  placeholder="Write a message"
+                ></textarea>
+                {{ if errors }}
+                <span class="inline-block text-pink-500">
+                  This field can't be empty.
+                </span>
+                {{ /if }}
+              </div>
+              <input
+                type="text"
+                class="gloin"
+                name="{{ honeypot ?? 'honeypot' }}"
+              />
+              <div class="transition-opacity hover:opacity-100 hover:ease-in">
+                <button
+                  type="submit"
+                  class="bg-primary text-white py-2 px-4 font-bold flex justify-center items-center md:w-1/2 w-full transition-all ease-in hover:bg-third focus:ring-4 focus:bg-primary focus:ring-primary/50 active:bg-third active:ring-4 active:ring-third/50 disabled:bg-opacity-50 rounded-full"
+                >
+                  Send a message
+                </button>
+              </div>
+            </div>
+
+            {{ /if }} {{ /form:contact }} @endantlers
+          </div>
+        </div>
+      </section>
+
+      <!-- SUCURSALES -->
+      <section id="sucursales" class="flex justify-center">
+        <div
+          class="w-full md:w-9/12 flex flex-col md:flex-row justify-center py-16 gap-10"
+        >
+          <h2
+            class="text-darkGray text-2xl text-center md:text-left md:text-5xl py-4 md:hidden font-bold"
+          >
+            Visit us!
+          </h2>
+
+          <div class="md:w-1/2">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207675.28831559443!2d-81.01206189329619!3d35.58020888176141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88515558977a5005%3A0x6742006b7eed5462!2sMooresville%2C%20NC%2C%20USA!5e0!3m2!1sen!2smx!4v1713307912796!5m2!1sen!2smx"
+              width="100%"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div
+            class="md:w-1/2 text-darkGray flex-col justify-center items-left gap-12 hidden md:flex"
+          >
+            <h2
+              class="text-darkGray text-2xl text-center md:text-left md:text-5xl font-bold"
+            >
+              Visit us!
+            </h2>
+            <p class="text-lg font-semibold text-neutralGray">
+              Mooresville, North Carolina, United States
+            </p>
+          </div>
+          <div class="w-full text-lg px-4 md:hidden font-normal text-navGray">
+            <p class="font-bold text-darkGray leading-8 break-all">
+              Mooresville, North Carolina, United States
+            </p>
+            <p>Phone number: 704-837-6746</p>
+            <p>Email: altopaint@gmail.com</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HORARIOS -->
+
+      <section id="horarios" class="bg-white">
+        <div
+          class="flex flex-col items-center text-neutralGray gap-y-4 md:hidden text-lg font-semibold max-w-[1000px] py-16 px-4"
+        >
+          <p class="font-bold text-black text-2xl">Hours</p>
+          <p>Monday - Friday: 9:00am - 5:00pm</p>
+          <p>Saturday: 10:00am - 3:00pm</p>
+          <p>Sunday: Closed</p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section x-data="" class="flex justify-center bg-mediumGray">
+        <div
+          class="flex flex-col items-center w-[90%] md:w-9/12 py-16 text-white max-w-[1000px]"
+        >
+          <h2 class="font-bold mb-10 text-2xl md:text-4xl">FAQs</h2>
+          <div class="divide-y w-full">
+            <!-- QUESTION 1 -->
+            <div x-data="{ open: false}">
+              <div x-on:click="open = !open" class="flex justify-between py-6">
+                <div class="font-extrabold">
+                  What types of painting services does Al's Touch of Paint offer?
+                </div>
+                <button class="text-white text-2xl">
+                  <svg
+                    x-show="!open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4.5v15m7.5-7.5h-15"
+                    />
+                  </svg>
+
+                  <svg
+                    x-show="open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h14"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div x-show="open" class="pb-4 text-white divide-y">
+                We offer a wide range of painting services, including interior painting, exterior painting, decorative finishes, cabinet painting, and commercial painting.
+              </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div x-data="{ open: false}">
+              <div x-on:click="open = !open" class="flex justify-between py-6">
+                <div class="font-extrabold">
+                  How can I request a quote for my painting project?
+                </div>
+                <button class="text-white text-2xl">
+                  <svg
+                    x-show="!open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4.5v15m7.5-7.5h-15"
+                    />
+                  </svg>
+
+                  <svg
+                    x-show="open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h14"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div x-show="open" class="pb-4 text-white divide-y">
+                You can request a quote by filling out the contact form on our website or by giving us a call. We'll schedule a convenient time to assess your project and provide you with a detailed quote.
+              </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div x-data="{ open: false}">
+              <div x-on:click="open = !open" class="flex justify-between py-6">
+                <div class="font-extrabold">
+                  Does Al's Touch of Paint use environmentally friendly paints?
+                </div>
+                <button class="text-white text-2xl">
+                  <svg
+                    x-show="!open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4.5v15m7.5-7.5h-15"
+                    />
+                  </svg>
+
+                  <svg
+                    x-show="open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h14"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div x-show="open" class="pb-4 text-white divide-y">
+                Yes, we prioritize eco-friendly practices and offer options for low-VOC and non-toxic paints that are safe for your family and the environment.
+              </div>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div x-data="{ open: false}">
+              <div x-on:click="open = !open" class="flex justify-between py-6">
+                <div class="font-extrabold">
+                  What is the typical timeline for completing a painting project?
+                </div>
+                <button class="text-white text-2xl">
+                  <svg
+                    x-show="!open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4.5v15m7.5-7.5h-15"
+                    />
+                  </svg>
+
+                  <svg
+                    x-show="open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h14"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div x-show="open" class="pb-4 text-white divide-y">
+                The timeline varies depending on the size and complexity of the project. We'll provide you with a detailed schedule during the consultation phase, ensuring transparency and meeting your deadlines.
+              </div>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div x-data="{ open: false}">
+              <div x-on:click="open = !open" class="flex justify-between py-6">
+                <div class="font-extrabold">
+                  Is Al's Touch of Paint licensed and insured?
+                </div>
+                <button class="text-white text-2xl">
+                  <svg
+                    x-show="!open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4.5v15m7.5-7.5h-15"
+                    />
+                  </svg>
+
+                  <svg
+                    x-show="open"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h14"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div x-show="open" class="pb-4 text-white divide-y">
+                Yes, we are fully licensed and insured to provide professional painting services. You can trust us to handle your project with expertise and accountability.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <section
+        class="bg-darkGray flex flex-col justify-center items-center py-16"
+      >
+        <div class="w-[90%] max-w-[1000px]">
+          <div
+            class="w-full flex flex-col md:flex-row md:items-center justify-evenly pb-16"
+          >
+            <div class="flex flex-col items-center gap-6 md:max-w-[255px]">
+              <div
+                class="justify-self-center self-center flex justify-center items-center h-20"
+              >
+                <img
+                  src="img/logos/logo-full-wt.png"
+                  alt="Ícono del logo"
+                  class="object-contain h-full w-full"
+                />
+              </div>
+              <div
+                class="text-white opacity-50 text-5xl flex flex-row justify-evenly mb-6 md:mb-0 gap-8"
+              >
+                <a href=""
+                  ><img src="./img/icons/facebook-w.png" alt="Icon facebook"
+                /></a>
+                <a href=""
+                  ><img src="./img/icons/whatsapp-w.png" alt="Icon WhatsApp"
+                /></a>
+                <a href=""
+                  ><img src="./img/icons/instagram-w.png" alt="Icon Instagram"
+                /></a>
+              </div>
+            </div>
+            <div
+              class="flex flex-col justify-center gap-y-4 mb-4 md:mb-0 text-white"
+            >
+              <h3 class="font-extrabold">Sitemap</h3>
+              <ul class="grid gap-y-4 underline opacity-60">
+                <li class=""><a href="#hero">Home</a></li>                
+                <li><a href="#products">Our work</a></li>
+                <li><a href="#departamentos">Who we are</a></li>
+              </ul>
+            </div>
+            <div class="text-white opacity-60 flex flex-col justify-center">
+              <ul class="grid gap-y-4 underline">
+                <br class="hidden md:inline-block" />
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contacto">Contact</a></li>
+                <li><a href="#sucursales">Location</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="opacity-50 w-[90%]" />
+        <span
+          class="sm:text-center text-white opacity-60 pt-8 mb-8 w-[90%] md:w-3/5"
+          >{{ now()->year }}, All’s Touch of Paint LLC. Al rights reserved. Developed by One Park Financial.</span
+        >
+      </section>
+    </footer>
+  </body>
+</html>
